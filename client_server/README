@@ -1,0 +1,5 @@
+Simple client-server example in python
+
+client sends commands to server which is executing them on losal computer
+(none security features)
+basicly, only useful for starting mplayer and xdtv :) 

@@ -1,0 +1,10 @@
+Small PyQt4 utility to help using tiled window managers from bed, with one hand :)
+
+- it is set to autohide on the left edge of the screen - it will show itself on "mouse hover" of screen left edge
+- configuration is hardcoded, but easyly changable
+- it has simple calendar widget
+- volume control
+- wifi signal meter
+- tag switcher (for mine xmonad configuration)
+- easyly extendable using PyQt :)
+
