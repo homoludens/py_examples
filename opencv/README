@@ -1,0 +1,7 @@
+OpenCV face detection in python. With python libs for OpenCV 
+found here: http://blog.jozilla.net/2008/06/27/fun-with-python-opencv-and-face-detection/
+
+and opencv warper is here:
+http://wwwx.cs.unc.edu/~gb/wp/blog/2007/02/04/python-opencv-wrapper-using-ctypes/
+
+but it was fot OpenCV 1.x, i slightly modefied it to work with OpenCV 2.x
