@@ -2,13 +2,46 @@
 # Code Example: Display a <strong class="highlight">window</strong> in <strong class="highlight">PyQt4</strong>
 # Python 2.6 with PyQt 4
 
-import sys
+import os,sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 
-import time
+#import time
 from pythonwifi.iwlibs import Wireless
 import shlex, subprocess
+
+
+
+try:
+  import ctypes
+except:
+  print >> sys.stderr, """\
+%s requires ctypes module to call XSendKeyEvent (X11 API).
+Please install ctypes first.
+"""
+  sys.exit(errno.ENOENT)
+#BASEDIR = os.path.dirname(sys.argv[0])
+BASEDIR = os.getcwd()
+
+def load_wrapper_cmodule (prefix=BASEDIR):
+  #try:
+    sys.stderr.write("Loading module %s ... " % (prefix + "/xsendevent.so",))
+    xsendevent = ctypes.cdll.LoadLibrary(prefix + "/xsendevent.so")
+    sys.stderr.write("Sucess\n")
+  #except:
+    #pass
+    return xsendevent
+  
+def x11_send_key_event(xsendevent, keyname='Right'):
+    print >> sys.stdout, "Keyname = %s" % (keyname,)
+    xsendevent.KeyEvent(keyname)
+    
+    
+def action_1(xsendevent):
+    x11_send_key_event(xsendevent, 'p')
+    
+    
+    
 
 class MainFrame(QtGui.QMainWindow):
 
@@ -26,13 +59,24 @@ class MainFrame(QtGui.QMainWindow):
         self.cal.setGridVisible(False)
         self.cal.move(20, 20)
 	self.cal.setGeometry(10, 10, 260, 160)
+        #self.cal.setFirstDayOfWeek ( Qt.DayOfWeek dayOfWeek )
 
 	self.mySlider = QtGui.QSlider(QtCore.Qt.Horizontal, self)
 	self.mySlider.move(20, 200)
 	self.mySlider.resize(240,50)
 	self.mySlider.setRange(0,99)
 	self.mySlider.setValue(50)
+        self.mySlider.setTracking(False)
 
+        self.backlightSlider = QtGui.QSlider(QtCore.Qt.Horizontal, self)
+        self.backlightSlider.move(20, 350)
+        self.backlightSlider.resize(240,50)
+        self.backlightSlider.setRange(0,99)
+        self.backlightSlider.setValue(50)
+        self.backlightSlider.setTickInterval(10)
+        self.backlightSlider.setTracking(False)
+        
+        
 	self.button1 = QtGui.QPushButton("1",self)
 	self.button2 = QtGui.QPushButton("2",self)
 	self.button3 = QtGui.QPushButton("3",self)
@@ -64,8 +108,10 @@ class MainFrame(QtGui.QMainWindow):
 	#except:
 	  #pass
 	#self.signalLevel.setFormat(str(essid)+"  "+str(signal))
-	
+
 	QtCore.QObject.connect(self.mySlider, QtCore.SIGNAL("valueChanged(int)"), self.__update_master_volume)	
+	QtCore.QObject.connect(self.backlightSlider, QtCore.SIGNAL("valueChanged(int)"), self.__update_backlight)  
+	
 	QtCore.QObject.connect(self.button1, QtCore.SIGNAL('clicked()'), self.__change_to_workspace_1)
 	QtCore.QObject.connect(self.button2, QtCore.SIGNAL('clicked()'), self.__change_to_workspace_2)
 	QtCore.QObject.connect(self.button3, QtCore.SIGNAL('clicked()'), self.__change_to_workspace_3)
@@ -123,25 +169,35 @@ class MainFrame(QtGui.QMainWindow):
         proc = subprocess.Popen('/usr/bin/amixer sset PCM ' + str(val) + '%', shell=True, stdout=subprocess.PIPE)
         proc.wait()
 
+    #
+    #  Set backlight
+    #
+    def __update_backlight(self, widget):
+        val = self.backlightSlider.value()
+        print val
+        proc = subprocess.Popen('/usr/bin/xbacklight -set ' + str(val), shell=True, stdout=subprocess.PIPE)
+        proc.wait()
+        
     def copy_to_all(self):
         proc = subprocess.Popen('/usr/bin/xsendkeys Alt_L+v', shell=True, stdout=subprocess.PIPE)
         proc.wait()
 
    
     def __change_to_workspace_1(self):
-        proc = subprocess.Popen('/usr/bin/xsendkeys Alt_L+1', shell=True, stdout=subprocess.PIPE)
-        proc.wait()
+        action_1(xsendevent)
+        #proc = subprocess.Popen('/usr/bin/xsendkeys Alt_L+1', shell=True, stdout=subprocess.PIPE)
+        #proc.wait()
 
     def __change_to_workspace_2(self):
-        proc = subprocess.Popen('/usr/bin/xsendkeys Alt_L+2', shell=True, stdout=subprocess.PIPE)
+        proc = subprocess.Popen('/usr/bin/xdotool key Alt_L+2', shell=True, stdout=subprocess.PIPE)
         proc.wait()
 
     def __change_to_workspace_3(self):
-        proc = subprocess.Popen('/usr/bin/xsendkeys Alt_L+3', shell=True, stdout=subprocess.PIPE)
+        proc = subprocess.Popen('/usr/bin/xdotool key Alt_L+3', shell=True, stdout=subprocess.PIPE)
         proc.wait()
 
     def __change_to_workspace_4(self):
-        proc = subprocess.Popen('/usr/bin/xsendkeys Alt_L+4', shell=True, stdout=subprocess.PIPE)
+        proc = subprocess.Popen('/usr/bin/xdotool key Alt_L+4', shell=True, stdout=subprocess.PIPE)
         proc.wait()
 
 
@@ -154,6 +210,8 @@ class MainFrame(QtGui.QMainWindow):
 
 
 if __name__ == "__main__":
+    xsendevent = load_wrapper_cmodule()
+  
     app = QtGui.QApplication(sys.argv)
     
     frame = MainFrame()
@@ -161,6 +219,8 @@ if __name__ == "__main__":
     frame.show()
     #frame.copy_to_all()
     #for i in range(1,11):
-      #frame.move(-300 + i*30, 100)
+        #time.sleep(1)
+        #x11_send_key_event(xsendevent, 'a')
+        #frame.move(-300 + i*30, 100)
     exit_code = app.exec_()
     sys.exit(exit_code)
