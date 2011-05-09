@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/">
+    <file>icons/close.svg</file>
+    <file>icons/filenew.svg</file>
+    <file>icons/next.svg</file>
+    <file>icons/previous.svg</file>
+    <file>icons/player_play.svg</file>
+    <file>icons/player_pause.svg</file>
+    <file>icons/star.svg</file>
+    <file>icons/star2.svg</file>
+    <file>icons/urssus.svg</file>
+    <file>icons/urssus-unread.svg</file>
+    <file>icons/feed.svg</file>
+    <file>icons/warning.svg</file>
+    <file>icons/error.svg</file>
+  </qresource>
+</RCC>

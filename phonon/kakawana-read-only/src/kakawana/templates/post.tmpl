@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+<title>#{post.title}</title>
+    <link rel="stylesheet" href="file://#{cssdir}/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="file://#{cssdir}/style.css" type="text/css" media="screen, projection">
+</head>
+<body>
+<div id="feedbar">
+  <a href="#{post.feed.url}">#{post.feed.name}</a>&nbsp;
+  <div id="feedcmds">
+    |&nbsp;<a href="cmd://mark-all-read">Mark all as read</a>&nbsp;|&nbsp;
+    <a href="cmd://refresh">Refresh</a>&nbsp;|&nbsp;
+    <a href="cmd://settings">Settings</a>
+  </div>
+</div>
+<div id="postbar">
+<?py if post.title: ?>
+  <h1><a href="#{post.url}">#{post.title}</a></h1>
+<?py else: ?>
+  <h1><a href="#{post.url}"><h1>No Title</a></h1>
+<?py #end ?>
+Posted at #{utc2local(post.date)} 
+  <div id="postcmds">
+    |&nbsp;<a href="cmd://keep-unread">Keep Unread</a>&nbsp;|&nbsp;
+<?py if post.star: ?>
+    <a href="cmd://unstar"><img src="file://#{cssdir}/star.svg" width="14px"></a>&nbsp;|&nbsp;
+<?py else: ?>
+    <a href="cmd://star"><img src="file://#{cssdir}/star2.svg" width="14px"></a>&nbsp;|&nbsp;
+<?py #end ?>
+    <!-- AddToAny BEGIN -->
+    <a href="http://www.addtoany.com/share_save?linkurl=#{escapedposturl}&amp;linkname=#{escapedposttitle}"><img src="http://static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share/Bookmark"/></a>
+  </div>
+</div>
+
+<div style='margin-top: 1em;'>
+#{content}
+<p>
+<?py if data and 'enclosures' in data: ?>
+  <?py for enclosure in  data.enclosures: ?>
+    <?py if hasattr(enclosure, 'type'): ?>
+        <?py if enclosure.type.startswith('audio'): ?>
+            <audio autobuffer="Yes" controls="controls" src="#{enclosure.href}"></audio><br>
+        <?py #end ?>
+        <?py if enclosure.type.startswith('image'): ?>
+            <img src="#{enclosure.href}"></img><br>
+        <?py #end ?>
+        <?py if enclosure.type.startswith('video'): ?>
+            <video autobuffer="Yes" controls="controls" src="#{enclosure.href}"></video><br>
+        <?py #end ?>
+    <?py #end ?>
+    <a href="#{enclosure.href}">Download</a><br>
+  <?py #end ?>
+<?py #end ?>
+<div id="postbar2">
+    <a href="cmd://keep-unread">Keep Unread</a>&nbsp;|&nbsp;
+<?py if post.star: ?>
+    <a href="cmd://unstar"><img src="file://#{cssdir}/star.svg" width="14px"></a>&nbsp;|&nbsp;
+<?py else: ?>
+    <a href="cmd://star"><img src="file://#{cssdir}/star2.svg" width="14px"></a>&nbsp;|&nbsp;
+<?py #end ?>
+    <a href="#{post.url}">Complete Story</a>
+</div>
+</div>
+</body>

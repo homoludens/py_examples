@@ -1,0 +1,2388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"> 
+  <head> 
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/> 
+    <script type='text/javascript'> 
+i18n_strings = new Array();
+i18n_strings['javascripts.map.overlays.maplint'] = 'Maplint';
+i18n_strings['javascripts.map.base.osmarender'] = 'Osmarender';
+i18n_strings['javascripts.map.base.mapnik'] = 'Mapnik';
+i18n_strings['javascripts.map.base.noname'] = 'NoName';
+i18n_strings['javascripts.map.base.cycle_map'] = 'Cycle Map';
+i18n_strings['javascripts.site.edit_tooltip'] = 'Edit the map';
+i18n_strings['javascripts.site.history_zoom_alert'] = 'You must zoom in to view edits for this area';
+i18n_strings['javascripts.site.edit_zoom_alert'] = 'You must zoom in to edit the map';
+i18n_strings['javascripts.site.edit_disabled_tooltip'] = 'Zoom in to edit the map';
+i18n_strings['javascripts.site.history_disabled_tooltip'] = 'Zoom in to view edits for this area';
+i18n_strings['javascripts.site.history_tooltip'] = 'View edits for this area';
+</script> 
+ 
+    <script src="/javascripts/prototype.js?1271689861" type="text/javascript"></script> 
+    <script src="/javascripts/site.js?1271689861" type="text/javascript"></script> 
+    <!--[if lt IE 7]><script src="/javascripts/pngfix.js?1271689861" type="text/javascript"></script><![endif]--> <!-- thanks, microsoft! --> 
+    <link href="/stylesheets/common.css?1271978038" media="screen" rel="stylesheet" type="text/css" /> 
+    <!--[if IE]><link href="/stylesheets/large.css?1271689861" media="screen" rel="stylesheet" type="text/css" /><![endif]--> <!-- IE is totally broken with CSS media queries --> 
+    <link href="/stylesheets/small.css?1271689861" media="only screen and (max-width: 481px)" rel="stylesheet" type="text/css" /> 
+    <link href="/stylesheets/large.css?1271689861" media="screen and (min-width: 482px)" rel="stylesheet" type="text/css" /> 
+    <link href="/stylesheets/print.css?1271689861" media="print" rel="stylesheet" type="text/css" /> 
+    <link href="/opensearch/osm.xml" rel="search" title="OpenStreetMap Search" type="application/opensearchdescription+xml" /> 
+    <meta content="OpenStreetMap is the free wiki world map." name="description" /> 
+    
+    <title>OpenStreetMap | homoludens</title> 
+  </head> 
+  <body> 
+    <div id="content"> 
+      
+      
+      
+ 
+      <img alt="Marko" class="user_image" src="/user/image/5336/marko.jpg?1271701913" style="float: right" /> 
+ 
+<h2>homoludens
+ 
+ 
+  
+ 
+  
+</h2> 
+ 
+<div id="userinformation"> 
+  
+    <!-- Displaying user's own profile page --> 
+    <a href="/user/homoludens/diary">my diary</a> 
+    |
+    <a href="/diary/new?display_name=homoludens">new diary entry</a> 
+    |
+    <a href="/user/homoludens/edits">my edits</a> 
+    |
+    <a href="/traces/mine">my traces</a> 
+    |
+    <a href="/user/homoludens/account">my settings</a> 
+    |
+    <a href="/user/homoludens/oauth_clients">oauth settings</a> 
+    |
+    <a href="/user/homoludens/blocks">blocks on me</a> 
+    
+  
+  
+</div> 
+ 
+<p><b>Mapper since:</b> 29 December 2006 at 19:32 (over 3 years ago)</p> 
+ 
+ 
+ 
+<h3>Description</h3> 
+ 
+<div id="description"><p></p></div> 
+ 
+ 
+  <div id="map" class="user_map" style="border: 1px solid black; position: relative; width: 400px; height: 400px; float: right;"> 
+    
+      
+ 
+ 
+ 
+  
+   
+  
+  
+  
+  
+ 
+ 
+<script src="/openlayers/OpenLayers.js?1271978038" type="text/javascript"></script> 
+<script src="/openlayers/OpenStreetMap.js?1271689861" type="text/javascript"></script> 
+<script src="/javascripts/map.js?1271689861" type="text/javascript"></script> 
+ 
+<script type="text/javascript"> 
+  <!--
+  var marker;
+ 
+  OpenLayers.Lang.setCode("en");
+ 
+  function init(){
+    var centre = new OpenLayers.LonLat(20.4962645999, 44.799211777459);
+    var zoom = 12;
+ 
+    
+ 
+    var map = createMap("map");
+ 
+    setMapCenter(centre, zoom);
+ 
+    
+    marker = addMarkerToMap(
+      new OpenLayers.LonLat(20.4962645999, 44.799211777459), null,
+      '<div class=\"user_popup\">\n  <img alt=\"Marko\" class=\"user_thumbnail\" src=\"/user/image/5336/marko.jpg?1271701913\" style=\"float :left\" />\n  <p>Your location<\/p>\n  <p><a href=\"/user/homoludens\">homoludens<\/a><\/p>\n<\/div>\n'
+    );
+    
+ 
+    var near_icon = OpenLayers.Marker.defaultIcon();
+    near_icon.url = OpenLayers.Util.getImagesLocation() + "marker-green.png";
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4938676098076, 44.793067246779), near_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Nearby mapper<\/p>\n  <p><a href=\"/user/dragan\">dragan<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4916404715897, 44.8049724269964), near_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Nearby mapper<\/p>\n  <p><a href=\"/user/dear2world\">dear2world<\/a><\/p>\n<\/div>\n'
+      );
+    
+ 
+    var friend_icon = OpenLayers.Marker.defaultIcon();
+    friend_icon.url = OpenLayers.Util.getImagesLocation() + "marker-blue.png";
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4641102782624, 44.8501484265185), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Marko%20Zivic\">Marko Zivic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.492498778485, 44.844816199625), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/zujovic\">zujovic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4588433325593, 44.8299290090246), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Sejbrrajderanddstarserifs\" class=\"user_thumbnail\" src=\"/user/image/23787/sejbrrajderanddstarserifs.jpg?1271701891\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/%D0%A2%D0%BE%D0%BD%D0%B8\">Тони<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.446514987136, 44.825445642947), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/stargazer\">stargazer<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.442431, 44.886149), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"2\" class=\"user_thumbnail\" src=\"/user/image/97383/2.jpg?1271701922\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Yu001\">Yu001<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.45891752162, 44.818688002117), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/tictactatic\">tictactatic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4704832068813, 44.8152708304075), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/mbazdar\">mbazdar<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.463316344377, 44.815499155559), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Newanja\">Newanja<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4812549582846, 44.7980905769195), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/dzuga\">dzuga<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.503334902884, 44.797816503951), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/nbumbic\">nbumbic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4971121779803, 44.7976642406223), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/fantazmo\">fantazmo<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.499107741483, 44.807499626019), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/nele\">nele<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.507089995519, 44.771133838114), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/salebab\">salebab<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.5267023078311, 44.7741804281136), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/pdcosa\">pdcosa<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.3643535605843, 44.8087175137197), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/pixxel\">pixxel<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.372636222022, 44.799491374003), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Srbija360*\">Srbija360*<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.457072161799, 44.816526607477), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/grecko\">grecko<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.416721931819, 44.8377162079255), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/%D0%94%D0%B0%D0%BD%D0%B8%D0%BB%D0%BE\">Данило<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        21.1513762, 43.0154686), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Jovanca%20Micic\">Jovanca Micic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.459024809957, 44.74830976907), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/kkyborg\">kkyborg<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.462243460788, 44.775216232102), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/nvesic\">nvesic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.41688194193, 44.7595858031969), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Nenad%20Spirkoski\">Nenad Spirkoski<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4179977408802, 44.7808823603894), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/%D0%9F%D1%80%D0%B5%D0%B4%D1%80%D0%B0%D0%B3%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%9B\">Предраг Минић<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.495631598677, 44.799400018687), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"N634728767_8345\" class=\"user_thumbnail\" src=\"/user/image/163307/n634728767_8345.jpg?1271702121\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/playahater\">playahater<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4549200763276, 44.8058778055992), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/naopak_lik\">naopak_lik<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        16.397394161606, 48.211570019404), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"20100403_me2\" class=\"user_thumbnail\" src=\"/user/image/18527/20100403_me2.jpg?1272230064\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Nikola%20Tasic\">Nikola Tasic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4663633338346, 44.8025364677305), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/StarvingMarvin\">StarvingMarvin<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.425293349374, 44.814197690166), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/%5BSx%5D\">[Sx]<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.447780989771, 44.81492834101), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Shipa\">Shipa<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4532616563261, 44.8145036717843), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/FiGu\">FiGu<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.415959262016, 44.838646630823), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/furdong\">furdong<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.3345703116841, 44.8303307413324), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/miodragjokic\">miodragjokic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4050373069204, 44.7530947333545), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/ssdicu\">ssdicu<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4265763646168, 44.8186438813248), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/pandra\">pandra<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4775910607705, 44.801523991901), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/gstevano\">gstevano<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.471727751861, 44.79385752692), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Sobot\">Sobot<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4160236350452, 44.7741804281138), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/super%20silja\">super silja<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4485490161077, 44.7923363191605), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Jazzva\">Jazzva<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4528548204397, 44.7922212378113), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Pavlovi%C4%87%20Igor\">Pavlović Igor<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4526733390232, 44.8069515681615), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/JetSetWilly\">JetSetWilly<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4794847003352, 44.8008769115754), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Sanja\">Sanja<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4765342704187, 44.7931875193168), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Sinke\">Sinke<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.476523541579, 44.801318449517), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Dejan%20Djokovic\">Dejan Djokovic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4883359900838, 44.8022015152876), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Stijak\">Stijak<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4801132449583, 44.8058569815777), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/bonzo\">bonzo<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4732727042567, 44.7869743510865), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/celicni\">celicni<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.5150722495433, 44.7859387580221), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/tarek77\">tarek77<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.5081199637771, 44.7901419321885), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Filip%20Brcic\">Filip Brcic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.5406873456343, 44.7898678214635), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Slavko%20Mandic\">Slavko Mandic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.506188773252, 44.78435487387), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/gillonio\">gillonio<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.498635672658, 44.805033324641), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/milan%20markovic\">milan markovic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4532526961707, 44.7458561783323), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/surs\">surs<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4794095984825, 44.7748506563451), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/user_6575\">user_6575<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.481941603808, 44.78260341292), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/PuppetMaster\">PuppetMaster<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.5526660910944, 44.7633643061796), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/n5r11\">n5r11<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4304431907085, 44.7382204253485), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Branko%20Kokanovic\">Branko Kokanovic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.3673576346808, 44.7345622223392), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Dalibor%20Marjanovic\">Dalibor Marjanovic<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.405977605524, 44.776998380773), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Nenad%20Bulatovi%C4%87\">Nenad Bulatović<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4482056934281, 44.7992797577729), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/true\">true<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.443746947422, 44.7959284103196), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/vladeta\">vladeta<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4114746085561, 44.822538736889), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Milo%C5%A1%20Jovanovi%C4%87\">Miloš Jovanović<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4171823493394, 44.8271349294192), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Milo%C5%A1%20Ratkovi%C4%87\">Miloš Ratković<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.391722821372, 44.843241538945), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/komple\">komple<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.413563, 44.838375), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/mickeymac\">mickeymac<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4034191947467, 44.8233767675314), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Delija67\">Delija67<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.3950165740413, 44.8027800682858), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/LePiaf\">LePiaf<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4830312277036, 44.7810823220107), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/urosg3\">urosg3<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4224564924623, 44.7679667680009), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Predrag\">Predrag<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4416870109, 44.80909197072), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/markomarko\">markomarko<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4254113665969, 44.8066128353553), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/zmaj23\">zmaj23<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.418, 44.81495), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Danijel%20GPS\">Danijel GPS<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.395681761865, 44.801957912293), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Stator\">Stator<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4672645560637, 44.8132843635821), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/Merjadok\">Merjadok<\/a><\/p>\n<\/div>\n'
+      );
+    
+      addMarkerToMap(new OpenLayers.LonLat(
+        20.4561763039965, 44.8149169246606), friend_icon.clone(),
+        '<div class=\"user_popup\">\n  <img alt=\"Anon_small\" class=\"user_thumbnail\" src=\"/images/anon_small.png?1271689861\" style=\"float :left\" />\n  <p>Friend<\/p>\n  <p><a href=\"/user/ceh\">ceh<\/a><\/p>\n<\/div>\n'
+      );
+    
+ 
+    if (document.getElementById('updatehome')) {
+      map.events.register("click", map, setHome);
+    }
+  }        
+ 
+  function setHome( e ) { 
+    closeMapPopup();
+ 
+    if (document.getElementById('updatehome').checked) {
+      var lonlat = getEventPosition(e);
+ 
+      document.getElementById('homerow').className = '';
+      document.getElementById('home_lat').value = lonlat.lat;
+      document.getElementById('home_lon').value = lonlat.lon;
+ 
+      if (marker) {
+        removeMarkerFromMap(marker);
+      }
+ 
+      marker = addMarkerToMap(
+        lonlat, null, 
+        '<div class=\"user_popup\">\n  <img alt=\"Marko\" class=\"user_thumbnail\" src=\"/user/image/5336/marko.jpg?1271701913\" style=\"float :left\" />\n  <p>Your location<\/p>\n  <p><a href=\"/user/homoludens\">homoludens<\/a><\/p>\n<\/div>\n'
+      );
+    }
+  }
+ 
+  window.onload = init;
+// -->
+</script> 
+ 
+    
+  </div> 
+ 
+  
+  
+ 
+  <h3 style="margin-top: 0">Your friends</h3> 
+ 
+  
+    <table id="friends"> 
+      <tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Marko%20Zivic">Marko Zivic</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Marko%20Zivic">send message</a> 
+    |
+    
+      <a href="/user/Marko%20Zivic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/zujovic">zujovic</a> 
+    
+      
+      
+        (5km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/zujovic">send message</a> 
+    |
+    
+      <a href="/user/zujovic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Sejbrrajderanddstarserifs" class="user_thumbnail" src="/user/image/23787/sejbrrajderanddstarserifs.jpg?1271701891" /> 
+  </td> 
+  <td> 
+    <a href="/user/%D0%A2%D0%BE%D0%BD%D0%B8">Тони</a> 
+    
+      
+      
+        (5km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/%D0%A2%D0%BE%D0%BD%D0%B8">send message</a> 
+    |
+    
+      <a href="/user/%D0%A2%D0%BE%D0%BD%D0%B8/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/stargazer">stargazer</a> 
+    
+      
+      
+        (5km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/stargazer">send message</a> 
+    |
+    
+      <a href="/user/stargazer/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="2" class="user_thumbnail" src="/user/image/97383/2.jpg?1271701922" /> 
+  </td> 
+  <td> 
+    <a href="/user/Yu001">Yu001</a> 
+    
+      
+      
+        (11km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Yu001">send message</a> 
+    |
+    
+      <a href="/user/Yu001/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/tictactatic">tictactatic</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/tictactatic">send message</a> 
+    |
+    
+      <a href="/user/tictactatic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/mbazdar">mbazdar</a> 
+    
+      
+      
+        (3km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/mbazdar">send message</a> 
+    |
+    
+      <a href="/user/mbazdar/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Newanja">Newanja</a> 
+    
+      
+      
+        (3km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Newanja">send message</a> 
+    |
+    
+      <a href="/user/Newanja/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/dzuga">dzuga</a> 
+    
+      
+      
+        (1km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/dzuga">send message</a> 
+    |
+    
+      <a href="/user/dzuga/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/nbumbic">nbumbic</a> 
+    
+      
+      
+        (579m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/nbumbic">send message</a> 
+    |
+    
+      <a href="/user/nbumbic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/fantazmo">fantazmo</a> 
+    
+      
+      
+        (185m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/fantazmo">send message</a> 
+    |
+    
+      <a href="/user/fantazmo/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/nele">nele</a> 
+    
+      
+      
+        (949m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/nele">send message</a> 
+    |
+    
+      <a href="/user/nele/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/salebab">salebab</a> 
+    
+      
+      
+        (3km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/salebab">send message</a> 
+    |
+    
+      <a href="/user/salebab/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/pdcosa">pdcosa</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/pdcosa">send message</a> 
+    |
+    
+      <a href="/user/pdcosa/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/pixxel">pixxel</a> 
+    
+      
+      
+        (10km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/pixxel">send message</a> 
+    |
+    
+      <a href="/user/pixxel/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Srbija360*">Srbija360*</a> 
+    
+      
+      
+        (10km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Srbija360*">send message</a> 
+    |
+    
+      <a href="/user/Srbija360*/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/grecko">grecko</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/grecko">send message</a> 
+    |
+    
+      <a href="/user/grecko/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/%D0%94%D0%B0%D0%BD%D0%B8%D0%BB%D0%BE">Данило</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/%D0%94%D0%B0%D0%BD%D0%B8%D0%BB%D0%BE">send message</a> 
+    |
+    
+      <a href="/user/%D0%94%D0%B0%D0%BD%D0%B8%D0%BB%D0%BE/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Jovanca%20Micic">Jovanca Micic</a> 
+    
+      
+      
+        (205km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Jovanca%20Micic">send message</a> 
+    |
+    
+      <a href="/user/Jovanca%20Micic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/kkyborg">kkyborg</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/kkyborg">send message</a> 
+    |
+    
+      <a href="/user/kkyborg/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/nvesic">nvesic</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/nvesic">send message</a> 
+    |
+    
+      <a href="/user/nvesic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Nenad%20Spirkoski">Nenad Spirkoski</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Nenad%20Spirkoski">send message</a> 
+    |
+    
+      <a href="/user/Nenad%20Spirkoski/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/%D0%9F%D1%80%D0%B5%D0%B4%D1%80%D0%B0%D0%B3%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%9B">Предраг Минић</a> 
+    
+      
+      
+        (7km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/%D0%9F%D1%80%D0%B5%D0%B4%D1%80%D0%B0%D0%B3%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%9B">send message</a> 
+    |
+    
+      <a href="/user/%D0%9F%D1%80%D0%B5%D0%B4%D1%80%D0%B0%D0%B3%20%D0%9C%D0%B8%D0%BD%D0%B8%D1%9B/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="N634728767_8345" class="user_thumbnail" src="/user/image/163307/n634728767_8345.jpg?1271702121" /> 
+  </td> 
+  <td> 
+    <a href="/user/playahater">playahater</a> 
+    
+      
+      
+        (54m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/playahater">send message</a> 
+    |
+    
+      <a href="/user/playahater/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/naopak_lik">naopak_lik</a> 
+    
+      
+      
+        (3km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/naopak_lik">send message</a> 
+    |
+    
+      <a href="/user/naopak_lik/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="20100403_me2" class="user_thumbnail" src="/user/image/18527/20100403_me2.jpg?1272230064" /> 
+  </td> 
+  <td> 
+    <a href="/user/Nikola%20Tasic">Nikola Tasic</a> 
+    
+      
+      
+        (492km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Nikola%20Tasic">send message</a> 
+    |
+    
+      <a href="/user/Nikola%20Tasic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/StarvingMarvin">StarvingMarvin</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/StarvingMarvin">send message</a> 
+    |
+    
+      <a href="/user/StarvingMarvin/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/%5BSx%5D">[Sx]</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/%5BSx%5D">send message</a> 
+    |
+    
+      <a href="/user/%5BSx%5D/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Shipa">Shipa</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Shipa">send message</a> 
+    |
+    
+      <a href="/user/Shipa/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/FiGu">FiGu</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/FiGu">send message</a> 
+    |
+    
+      <a href="/user/FiGu/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/furdong">furdong</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/furdong">send message</a> 
+    |
+    
+      <a href="/user/furdong/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/miodragjokic">miodragjokic</a> 
+    
+      
+      
+        (13km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/miodragjokic">send message</a> 
+    |
+    
+      <a href="/user/miodragjokic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/ssdicu">ssdicu</a> 
+    
+      
+      
+        (9km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/ssdicu">send message</a> 
+    |
+    
+      <a href="/user/ssdicu/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/pandra">pandra</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/pandra">send message</a> 
+    |
+    
+      <a href="/user/pandra/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/tomic">tomic</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/tomic">send message</a> 
+    |
+    
+      <a href="/user/tomic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/gstevano">gstevano</a> 
+    
+      
+      
+        (1km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/gstevano">send message</a> 
+    |
+    
+      <a href="/user/gstevano/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Sobot">Sobot</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Sobot">send message</a> 
+    |
+    
+      <a href="/user/Sobot/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/super%20silja">super silja</a> 
+    
+      
+      
+        (7km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/super%20silja">send message</a> 
+    |
+    
+      <a href="/user/super%20silja/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Jazzva">Jazzva</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Jazzva">send message</a> 
+    |
+    
+      <a href="/user/Jazzva/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Pavlovi%C4%87%20Igor">Pavlović Igor</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Pavlovi%C4%87%20Igor">send message</a> 
+    |
+    
+      <a href="/user/Pavlovi%C4%87%20Igor/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/JetSetWilly">JetSetWilly</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/JetSetWilly">send message</a> 
+    |
+    
+      <a href="/user/JetSetWilly/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Sanja">Sanja</a> 
+    
+      
+      
+        (1km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Sanja">send message</a> 
+    |
+    
+      <a href="/user/Sanja/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Sinke">Sinke</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Sinke">send message</a> 
+    |
+    
+      <a href="/user/Sinke/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Dejan%20Djokovic">Dejan Djokovic</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Dejan%20Djokovic">send message</a> 
+    |
+    
+      <a href="/user/Dejan%20Djokovic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Stijak">Stijak</a> 
+    
+      
+      
+        (709m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Stijak">send message</a> 
+    |
+    
+      <a href="/user/Stijak/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/bonzo">bonzo</a> 
+    
+      
+      
+        (1km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/bonzo">send message</a> 
+    |
+    
+      <a href="/user/bonzo/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/celicni">celicni</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/celicni">send message</a> 
+    |
+    
+      <a href="/user/celicni/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/tarek77">tarek77</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/tarek77">send message</a> 
+    |
+    
+      <a href="/user/tarek77/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Filip%20Brcic">Filip Brcic</a> 
+    
+      
+      
+        (1km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Filip%20Brcic">send message</a> 
+    |
+    
+      <a href="/user/Filip%20Brcic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Slavko%20Mandic">Slavko Mandic</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Slavko%20Mandic">send message</a> 
+    |
+    
+      <a href="/user/Slavko%20Mandic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/gillonio">gillonio</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/gillonio">send message</a> 
+    |
+    
+      <a href="/user/gillonio/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/milan%20markovic">milan markovic</a> 
+    
+      
+      
+        (674m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/milan%20markovic">send message</a> 
+    |
+    
+      <a href="/user/milan%20markovic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/surs">surs</a> 
+    
+      
+      
+        (7km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/surs">send message</a> 
+    |
+    
+      <a href="/user/surs/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/user_6575">user_6575</a> 
+    
+      
+      
+        (3km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/user_6575">send message</a> 
+    |
+    
+      <a href="/user/user_6575/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/PuppetMaster">PuppetMaster</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/PuppetMaster">send message</a> 
+    |
+    
+      <a href="/user/PuppetMaster/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/n5r11">n5r11</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/n5r11">send message</a> 
+    |
+    
+      <a href="/user/n5r11/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Branko%20Kokanovic">Branko Kokanovic</a> 
+    
+      
+      
+        (9km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Branko%20Kokanovic">send message</a> 
+    |
+    
+      <a href="/user/Branko%20Kokanovic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Dalibor%20Marjanovic">Dalibor Marjanovic</a> 
+    
+      
+      
+        (12km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Dalibor%20Marjanovic">send message</a> 
+    |
+    
+      <a href="/user/Dalibor%20Marjanovic/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Nenad%20Bulatovi%C4%87">Nenad Bulatović</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Nenad%20Bulatovi%C4%87">send message</a> 
+    |
+    
+      <a href="/user/Nenad%20Bulatovi%C4%87/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/true">true</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/true">send message</a> 
+    |
+    
+      <a href="/user/true/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/vladeta">vladeta</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/vladeta">send message</a> 
+    |
+    
+      <a href="/user/vladeta/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Milo%C5%A1%20Jovanovi%C4%87">Miloš Jovanović</a> 
+    
+      
+      
+        (7km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Milo%C5%A1%20Jovanovi%C4%87">send message</a> 
+    |
+    
+      <a href="/user/Milo%C5%A1%20Jovanovi%C4%87/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Milo%C5%A1%20Ratkovi%C4%87">Miloš Ratković</a> 
+    
+      
+      
+        (7km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Milo%C5%A1%20Ratkovi%C4%87">send message</a> 
+    |
+    
+      <a href="/user/Milo%C5%A1%20Ratkovi%C4%87/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/komple">komple</a> 
+    
+      
+      
+        (10km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/komple">send message</a> 
+    |
+    
+      <a href="/user/komple/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/mickeymac">mickeymac</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/mickeymac">send message</a> 
+    |
+    
+      <a href="/user/mickeymac/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Delija67">Delija67</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Delija67">send message</a> 
+    |
+    
+      <a href="/user/Delija67/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/LePiaf">LePiaf</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/LePiaf">send message</a> 
+    |
+    
+      <a href="/user/LePiaf/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/urosg3">urosg3</a> 
+    
+      
+      
+        (2km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/urosg3">send message</a> 
+    |
+    
+      <a href="/user/urosg3/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Predrag">Predrag</a> 
+    
+      
+      
+        (7km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Predrag">send message</a> 
+    |
+    
+      <a href="/user/Predrag/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/markomarko">markomarko</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/markomarko">send message</a> 
+    |
+    
+      <a href="/user/markomarko/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/zmaj23">zmaj23</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/zmaj23">send message</a> 
+    |
+    
+      <a href="/user/zmaj23/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Danijel%20GPS">Danijel GPS</a> 
+    
+      
+      
+        (6km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Danijel%20GPS">send message</a> 
+    |
+    
+      <a href="/user/Danijel%20GPS/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Stator">Stator</a> 
+    
+      
+      
+        (8km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Stator">send message</a> 
+    |
+    
+      <a href="/user/Stator/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/Merjadok">Merjadok</a> 
+    
+      
+      
+        (3km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/Merjadok">send message</a> 
+    |
+    
+      <a href="/user/Merjadok/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/ceh">ceh</a> 
+    
+      
+      
+        (4km away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/ceh">send message</a> 
+    |
+    
+      <a href="/user/ceh/remove_friend?referer=%2Fuser%2Fhomoludens">remove as friend</a> 
+    
+  </td> 
+</tr> 
+ 
+    </table> 
+  
+ 
+  <h3>Other nearby users</h3> 
+ 
+  
+    <table id="nearbyusers"> 
+      <tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/dragan">dragan</a> 
+    
+      
+      
+        (709m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/dragan">send message</a> 
+    |
+    
+      <a href="/user/dragan/make_friend?referer=%2Fuser%2Fhomoludens">add as friend</a> 
+    
+  </td> 
+</tr> 
+<tr> 
+  <td rowspan="2"> 
+    <img alt="Anon_small" class="user_thumbnail" src="/images/anon_small.png?1271689861" /> 
+  </td> 
+  <td> 
+    <a href="/user/dear2world">dear2world</a> 
+    
+      
+      
+        (737m away)
+      
+    
+  </td> 
+</tr> 
+<tr> 
+  <td> 
+    <a href="/message/new/dear2world">send message</a> 
+    |
+    
+      <a href="/user/dear2world/make_friend?referer=%2Fuser%2Fhomoludens">add as friend</a> 
+    
+  </td> 
+</tr> 
+ 
+    </table> 
+  
+ 
+ 
+    </div> 
+ 
+    <span id="greeting"> 
+      
+        <span id="full-greeting">Welcome, <a href="/user/homoludens" title="Your user page">homoludens</a></span> 
+        <span id="small-greeting"><a href="/user/homoludens">Your user page</a></span> | 
+        
+        
+<a href="/user/homoludens/inbox" id="inboxanchor" title="Your inbox contains no unread messages">inbox (0)</a> 
+ |
+        <a  href="/logout?referer=%2Fuser%2Fhomoludens" id="logoutanchor" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = '/logout?referer=%2Fuser%2Fhomoludens&amp;session=89d4846adf05cb43b322630b1ca557fa';f.submit();return false;" title="Log out">logout</a> 
+      
+    </span> 
+ 
+    <div> 
+      <ul id="tabnav"> 
+        
+        <li><a href="/" class="" id="viewanchor" title="View the map">View</a></li> 
+        <li><a href="/edit" class="" id="editanchor" title="Edit the map">Edit</a></li> 
+        <li><a href="/browse" class="" id="historyanchor" title="View edits for this area">History</a></li> 
+        
+        <li><a href="/export" class="" id="exportanchor" title="Export map data">Export</a></li> 
+        
+        <li><a href="/traces" class="" id="traceanchor" title="Manage GPS traces">GPS Traces</a></li> 
+        <li><a href="/diary" id="diaryanchor" title="View user diaries">User Diaries</a></li> 
+      </ul> 
+    </div> 
+ 
+    <div id="left"> 
+ 
+      <div id="logo"> 
+        <center> 
+          <h1>OpenStreetMap</h1> 
+          <a href="/"><img alt="OpenStreetMap logo" border="0" height="120" src="/images/osm_logo.png?1271689861" width="120" /></a><br/> 
+          <h2 class="nowrap">The Free Wiki World Map</h2> 
+        </center> 
+      </div> 
+ 
+      
+ 
+      
+ 
+      
+ 
+      <div id="left_menu" class="left_menu"> 
+        <a href="http://wiki.openstreetmap.org" title="Help &amp; Wiki site for the project">Help &amp; Wiki</a><br /> 
+        <a href="/copyright">Copyright &amp; License</a><br /> 
+        <a href="http://blogs.openstreetmap.org/" title="News blog about OpenStreetMap, free geographical data, etc.">News blog</a><br /> 
+        <a href="http://wiki.openstreetmap.org/wiki/Merchandise" title="Shop with branded OpenStreetMap merchandise">Shop</a><br /> 
+        
+      </div> 
+ 
+      
+ 
+      <center> 
+        <div class="donate"> 
+          <a href="http://donate.openstreetmap.org/" title="Support OpenStreetMap with a monetary donation">Make a Donation</a> 
+        </div> 
+      </center> 
+    </div> 
+  </body> 
+</html> 

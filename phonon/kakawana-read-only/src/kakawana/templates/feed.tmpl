@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+<title>#{feed.name}</title>
+    <link rel="stylesheet" href="file://#{cssdir}/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="file://#{cssdir}/style.css" type="text/css" media="screen, projection">
+<!--     <script src="http://static.simile.mit.edu/timeline/api-2.3.0/timeline-api.js?bundle=true" type="text/javascript"></script> -->
+
+
+   <script>
+/*        var timeline_data = #{timelinedata};
+        var tl;
+        function onLoad() {
+            var tl_el = document.getElementById("tl");
+            var eventSource1 = new Timeline.DefaultEventSource();
+
+            var theme1 = Timeline.ClassicTheme.create();
+            theme1.autoWidth = true; // Set the Timeline's "width" automatically.
+                                     // Set autoWidth on the Timeline's first band's theme,
+                                     // will affect all bands.
+
+            var bandInfos = [
+                Timeline.createBandInfo({
+                    width:          45, // set to a minimum, autoWidth will then adjust
+                    intervalUnit:   Timeline.DateTime.DAY,
+                    intervalPixels: 200,
+                    eventSource:    eventSource1,
+                    theme:          theme1,
+                    layout:         'detailed'  // original, overview, detailed
+                })
+            ];
+
+            // create the Timeline
+            tl = Timeline.create(tl_el, bandInfos, Timeline.HORIZONTAL);
+
+            var url = '.'; // The base url for image, icon and background image
+                           // references in the data
+            eventSource1.loadJSON(timeline_data, url); // The data was stored into the
+                                                       // timeline_data variable.
+            tl.layout(); // display the Timeline
+        }
+
+        var resizeTimerID = null;
+        function onResize() {
+            if (resizeTimerID == null) {
+                resizeTimerID = window.setTimeout(function() {
+                    resizeTimerID = null;
+                    tl.layout();
+                }, 500);
+            }
+        }*/
+   </script>
+
+</head>
+<body>
+<!-- <body onload="onLoad();" onresize="onResize();"> -->
+<div id="feedbar">
+  <h1><a href="#{feed.url}">#{feed.name}</a></h1>
+</div>
+<div>
+  <table width="100%" border="0" colwidths="33%,33%,33%">
+  <td>
+  <div style="width: 100%; padding: 5px; text-align: center;">
+    <a href="cmd://unsubscribe">
+    <img width="128px" src="file://#{cssdir}/close.svg"><br>
+    Unsubscribe</a>
+  </div>
+  <td>
+  <div style="width: 100%; padding: 5px; text-align: center;">
+    <a href="cmd://mark-all-read">
+    <img width="128px" src="file://#{cssdir}/player_fwd.svg"><br>
+    Mark All as Read</a>
+  </div>
+  <td>
+  <div style="width: 100%; padding: 5px; text-align: center;">
+    <a href="cmd://settings">
+    <img width="128px" src="file://#{cssdir}/configure.svg"><br>
+    Settings</a>
+  </div>
+  </table>
+</div>
+  
+<div>
+<ul>
+<li>Site URL: <a href="#{feed.url}">#{feed.url}</a></br>
+<li>Feed URL: <a href="#{feed.xmlurl}">#{feed.xmlurl}</a></br>
+<?py if feed.posts: ?>
+    <li>Last Update: #{feed.posts[0].date}
+<?py #end ?>
+<li>Last Checked: #{feed.check_date} [Status: #{feed.last_status}]</li>
+<?py if feed.bad_check_count: ?>
+  <li class="error">Last successful check: #{feed.last_good_check} [Checks failed: #{feed.bad_check_count}]</li>
+<?py #end ?>
+<?py if feed.last_status == 301: ?>
+    <div class="warning"><img style="vertical-align: middle;" height="48px" src="file://#{cssdir}/warning.svg">
+    This status means the feed has moved. It is still working, but it may start
+    to fail later. <a href="cmd://fix-error-301">Click here to find its new location.</a>
+    </div>
+<?py elif feed.last_status == 404: ?>
+    <div class="error"><img style="vertical-align: middle;" height="48px" src="file://#{cssdir}/error.svg">
+    This error means the feed is not at this URL. <a href="cmd://fix-error-404">Click here to find its new location.</a>
+    </div>
+<?py elif feed.last_status == 410: ?>
+    <div class="error"><img style="vertical-align: middle;" height="48px" src="file://#{cssdir}/error.svg">
+    This error means the feed doesn't exist anymore. <a href="cmd://unsubscribe">Click here to unsubscribe.</a>
+    </div>
+<?py else: ?>
+  <div class="ok"><img style="vertical-align: middle;" height="48px" src="file://#{cssdir}/ok.svg">This feed is working correctly.
+  </div>
+<?py #end ?>
+</ul>
+<h3>Recent posts</h3>
+<ul>
+<?py for post in feed.posts[:10]:?>
+    <li><a href=#{post.url}>#{post.title}</a>
+<?py #end ?>
+</ul>
+
+</div>
+  
+</body>

@@ -1,0 +1,49 @@
+====
+TODO
+====
+
+Things that should be done before there is a release:
+-----------------------------------------------------
+
+* Editing feed properties
+* Track feed errors and give feed diagnostics
+
+  Done in part, need to implement the "fixes"
+
+* Better startup speed
+
+  Improved. Could be better.
+
+* Fix "mark-unread closes the feed" bug
+
+
+* Better social sharing
+* setup.py and stuff
+* OPML import/export
+* General UI review
+* "Feed decides" mode
+* Integrate offline mode (per-feed?)
+* Feed icons as they were in uRSSus
+* Improve the whole "add feed" process
+  
+  * Add feedback of operation
+  * Handle timeouts and missing feeds
+
+* Finish implementing enclosure support
+ 
+  * Remember position in podcasts
+  * Add special "Podcasts you are listening" folder
+  * Implement prefetching (per feed)
+  * Implement fetching (per item)
+  * Implement generic "download/open" handler
+
+Things that would be nice to have:
+----------------------------------
+
+* Syncing item read/unread status with greader
+
+  Done google => kakawana for read items.
+
+* Windows binaries
+* Tags
+

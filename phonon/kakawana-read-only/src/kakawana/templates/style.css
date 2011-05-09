@@ -1,0 +1,38 @@
+#feedbar {
+    border: 1px solid #ccf;
+    padding: 4px;
+    margin-bottom: 8px;
+    vertical-align: middle;
+}
+
+#feedcmds {
+    float: right;
+    vertical-align: middle;
+}
+
+#postbar {
+    border: 1px solid #ccf;
+    padding: 4px;
+    vertical-align: middle;
+}
+
+#postcmds {
+    float: right;
+    vertical-align: middle;
+}
+
+#postbar2 {
+    border: 1px solid #ccf;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+}
+html { font-size: 100%; font-family: sans-serif; }
+body { margin: 12px; }
+blockquote { padding: 4px 0 4px 0; }
+a:link { text-decoration: none; color: #36c; }
+a:visited { text-decoration: none; color: #36c; }
+a:hover { text-decoration: none; color: #36c; }
+a:active, a:focus { text-decoration: underline; color: #000; }
+code, pre { color: #000; } /*** very optional, but still useful. W3C uses about the same colors for codes ***/
+
